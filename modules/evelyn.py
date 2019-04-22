@@ -2,8 +2,24 @@
 # Evelyn's light module
 # import RPi.GPIO as GPIO
 from enum import Enum
+import RPi.GPIO as GPIO
 
 actions = ("setcolor", "colors", "status")
+
+# Initalize GPIO pins
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(5, GPIO.OUT) #RED pin
+GPIO.setup(6, GPIO.OUT) #GREEN pin
+GPIO.setup(13, GPIO.OUT) #BLUE pin
+# Make variable list for PINS (in order of RGB)
+RGBpins = [
+    GPIO.PWM(5, 100),
+    GPIO.PWM(6, 100),
+    GPIO.PWM(13, 100)
+]
+# Initalize every pin to 0 duty
+for pin in RGBpins:
+    pin.start(0)
 
 
 # Create an enum for all possible colors
@@ -13,12 +29,12 @@ actions = ("setcolor", "colors", "status")
 # Dictonary for defined colors
 # RED: Angry
 # BLUE: Sad
-# ORANGE: Slightly Irritated
+# YELLOW: Slightly Irritated
 # PURPLE: Happy
 class Color(Enum):
     PURPLE = {"color": (153, 51, 255), "mood": "Happy"}
     BLUE = {"color": (9, 0, 255), "mood": "Sad"}
-    ORANGE = {"color": (255, 200, 46), "mood": "Irritated"}
+    YELLOW = {"color": (205, 205, 2), "mood": "Irritated"}
     RED = {"color": (255, 0, 0), "mood": "Angry"}
     OFF = {"color": (0, 0, 0), "mood": "off"}
 
@@ -26,14 +42,21 @@ light = Color.OFF
 
 def setcolor(request): 
     global light
-    color = request.upper()
+    target = request.upper()
     
     try:
-        light = Color[color]
+        target = Color[target]
+        light = target
     except:
         return "Invalid color"
     
-
+    #target is now tuple of rgb values
+    target = target.value["color"]
+    #transform 0-255 values to 0-100 and set pin to that color
+    for i in range(len(target)):
+        value = int((target[i]/255) * 100)
+        RGBpins[i].ChangeDutyCycle(value)
+    
     return "Color set to " + light.name
 
 def colors():
