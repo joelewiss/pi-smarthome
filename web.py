@@ -5,6 +5,7 @@ from http.server import HTTPServer, BaseHTTPRequestHandler
 from actionhandler import *
 from index.readindex import *
 from log import Logger
+from os.path import abspath
 
 class WebHandler(BaseHTTPRequestHandler):
     def do_GET(self):
@@ -33,7 +34,12 @@ class WebHandler(BaseHTTPRequestHandler):
 if __name__ == "__main__":
     port = 8000
     index = read_index()
-    logger = Logger("web.log")
+    
+    print("\n\n")
+    print("Logging to web.log")
+    logger = Logger(abspath("web.log"))
     httpd = HTTPServer(('', port), WebHandler)
     print("Server listing on ", httpd.server_address)
+    print("\n\n")
+
     httpd.serve_forever()

@@ -5,14 +5,16 @@ from base64 import b64decode
 
 class Logger:
     def __init__(self, file):
-        self.file = open(file, "w") 
+        self.file = file 
 
     def log(self, request, status):
         path = request.path
         user = self.getUser(request.headers)
 
         string = "{}\t{} requested {}  ->  {}".format(request.log_date_time_string(), user, path, status)
-        self.file.write(string + "\n")
+        log = open(self.file, "a")
+        log.write(string + "\n")
+        log.close()
 
     def getUser(self, headers):
         try:
