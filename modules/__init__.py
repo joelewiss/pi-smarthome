@@ -3,5 +3,4 @@ __all__ = [
 "desktop",
 "stovefan",
 "catlight",
-"evelyn"
 ]

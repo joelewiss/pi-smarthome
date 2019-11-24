@@ -1,7 +1,9 @@
 # Joe Lewis 2018
 from subprocess import run
+from base import Type
 
 actions = ("on", "off", "status")
+type = Type.SWITCH
 isOn = False
 
 def on():

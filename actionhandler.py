@@ -3,25 +3,19 @@ from modules import *
 from modules import __all__ as avaiable_modules
 
 class Action:
-    module_valid = False
-    action_valid = False
 
-    def __init__(self, request):
-        strings = request.split("/")
-        if (len(strings) > 2):
-            self.module = strings[1]
-            self.action = strings[2]
-            try:
-                self.data = strings[3]
-            except:
-                self.data = ""
+    def __init__(self, module, action, data=None):
+        self.module = module
+        self.action = action
+        self.data = data
+        self.module_valid = False
+        self.action_valid = False
 
-            if avaiable_modules.count(self.module) > 0:
-                self.module_valid = True
-                actions = eval(self.module + ".actions")
-                if actions.count(self.action) > 0:
-                    self.action_valid = True
-                 
+        if self.module in avaiable_modules:
+            self.module_valid = True
+            actions = eval(self.module + ".actions")
+            if action in actions:
+                self.action_valid = True        
 
     def run(self):
         try:

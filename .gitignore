@@ -1,5 +1,6 @@
 __pycache__/
 *.py[cod]
-web.log
 
-web.log
+web.log*
+
+pyenv/

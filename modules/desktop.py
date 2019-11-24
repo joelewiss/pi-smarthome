@@ -1,7 +1,9 @@
 # Joe Lewis 2018
 from subprocess import run
+from base import Type
 
-actions = ("wake")
+actions = ["wake"]
+type = Type.BANG
 lit = False
 
 def wake():
