@@ -1,3 +1,5 @@
+#!/home/pi/webapp/pyenv/bin/python
+
 from flask import Flask, make_response, abort
 from actionhandler import Action
 from index.readindex import read_index
@@ -9,7 +11,7 @@ app = Flask(__name__)
 def index():
     return read_index()
 
-@app.route("/<module>/<action>")
+@app.route("/<module>/<action>/")
 def run_action(module, action):
     request = Action(module, action)
     if not request.module_valid or not request.action_valid:
@@ -30,6 +32,10 @@ def return_list():
         list[module]["enabled"] = True
 
     return list
+
+@app.route("/favicon.ico")
+def favicon():
+    abort(204)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8000, debug=False)

@@ -4,6 +4,7 @@ from base import Type
 
 actions = ("on", "off", "status")
 type = Type.SWITCH
+name = "Tree light"
 isOn = False
 
 def on():
@@ -12,7 +13,7 @@ def on():
         run(["/home/pi/webapp/modules/switchctl", "2", "1"])
         isOn = True
     
-    return "Stovefan turned on"
+    return "{} turned on".format(name)
 
 def off():
     global isOn
@@ -20,10 +21,10 @@ def off():
         run(["/home/pi/webapp/modules/switchctl", "2", "0"]) 
         isOn = False
     
-    return "Stovefan turned off"
+    return "{} turned off".format(name)
 
 def status():
     if isOn:
-        return "Stovefan is on"
+        return "{} is on".format(name)
     else:
-        return "Stovefan is off"
+        return "{} is off".format(name)
