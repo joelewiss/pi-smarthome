@@ -4,7 +4,7 @@ from base import Type
 
 actions = ("on", "off", "status")
 type = Type.SWITCH
-name = "Tree light"
+name = "Living Room"
 isOn = False
 
 def on():
