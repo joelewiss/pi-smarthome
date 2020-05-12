@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <title>Smarthome Dashboard</title>
+
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <meta name="author" content="Joe Lewis">
+
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+
+        <style>
+        body{
+            font-family:Sans-serif;
+                        background-color: #151515;
+            color: #aeaeae;
+        }
+
+                body a {
+                        color: #aeaeae;
+                        text-decoration: none;
+                }
+
+                iframe {
+                        border: 2px solid #2d2d2d;
+                }
+
+        #buttons {
+                        padding: 20px 0 10px 0;
+                }
+
+                #buttons button {
+            font: 600 16px Sans-serif;
+        }
+
+                #title {
+                        margin-bottom:20px;
+        }
+
+                #weather {
+                        display:block;
+                        margin-bottom:15px;
+                }
+        </style>
+    </head>
+    <body>
+        <h1 id="title">Joe's Smarthome Dashboard</h1>
+        <iframe title="bedlight" src="/bedlight" width=300 height=300></iframe>
+        <iframe title="livingroom" src="/livingroom" width=300 height=300></iframe>
+        <iframe title="catlight" src="/catlight" width=300 height=300></iframe>
+
+        <br>
+        <iframe title="projector" src="http://joe-projector/cgi-bin/webconf.exe?page=13" width=250 height=400></iframe>
+
+                <div id="buttons">
+                        <button class="ui-button big-button" onclick="wakeDesktop()">Wake Desktop</button>
+                        <a href="list.html"><button class="ui-button big-button">Go to Action List</button></a>
+                </div>
+
+                <img id="weather" src="http://banners.wunderground.com/cgi-bin/banner/ban/wxBanner?bannertype=wxstnsticker&weatherstationcount=KMDEDGEW31" height="160" width="160" border="0" alt="Weather Underground PWS KMDEDGEW31" />
+    </body>
+</html>
