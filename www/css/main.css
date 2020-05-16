@@ -1,0 +1,53 @@
+
+body{
+    font-family:Sans-serif;
+    background-color: #151515;
+    color: #aeaeae;
+}
+
+body a {
+    color: #aeaeae;
+    text-decoration: none;
+}
+
+#buttons {
+    padding: 20px 0 10px 0;
+}
+
+#buttons button {
+    display: block;
+    font: 600 16px Sans-serif;
+    margin: 5px;
+}
+
+#title {
+    margin-bottom: 20px;
+    font-family: "Courier New", monospace;
+}
+
+#weather {
+    display: block;
+    margin-bottom: 15px;
+}
+
+
+.switch {
+    display: inline-block;
+    margin: 5px;
+    color: black;
+    background-color: grey;
+    width: 300px;
+    height: 150px;
+}
+
+.switch-title {
+    font-family: Sans-Serif;
+    text-align: center;
+}
+
+.switch-status {
+    font-weight: bold;
+    font-size: 3em;
+    margin: auto;
+    text-align: center;
+}

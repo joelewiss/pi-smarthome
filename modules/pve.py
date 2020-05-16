@@ -22,7 +22,7 @@ def power150():
 
 @register(name)
 def power155():
-    return power(157)
+    return power(155)
 
 def power(id):
     path = endpt + "nodes/JOE-PVE2/qemu/{}/status/start".format(id)
