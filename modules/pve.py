@@ -5,7 +5,7 @@ import ssl,json
 
 sslContext = ssl.SSLContext(ssl.PROTOCOL_SSLv23)
 sslContext.verify_mode = ssl.CERT_NONE
-name = "pve"
+MODULE = "pve"
 
 host = "192.168.1.10"
 port = 8006
@@ -16,13 +16,18 @@ token = file.read()
 file.close()
 token = "PVEAPIToken=joe@pam!c2={}".format(token).rstrip()
 
-@register(name)
+@register(MODULE)
 def power150():
     return power(150)
 
-@register(name)
+@register(MODULE)
 def power155():
     return power(155)
+
+@register(MODULE)
+def wake():
+    run(["wakeonlan", "30:5A:3A:83:27:21"])
+    return "Server turned on"
 
 def power(id):
     path = endpt + "nodes/JOE-PVE2/qemu/{}/status/start".format(id)
