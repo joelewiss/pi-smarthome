@@ -1,0 +1,10 @@
+body{
+    font-family:Sans-serif;
+    background-color: #151515;
+    color: #aeaeae;
+}
+
+body a {
+    color: #aeaeae;
+    text-decoration: none;
+}

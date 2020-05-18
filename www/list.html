@@ -2,85 +2,20 @@
 <html lang="en">
     <head>
         <title>Smarthome List</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Joe Lewis">
+        <meta charset="utf-8"/>
 
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <meta name="author" content="Joe Lewis">
-                <meta charset="utf-8"/>
-
-                <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
-                <script src="/static/js/jquery-3.4.1.min.js"></script>
-                <script>
-                $(function() {
-                        $.get("/action/list", function(data) {
-                                $("#content").empty();
-                                for (module in data) {
-                                        heading = `<h3>${module}</h3>`;
-                                        $("#content").append(heading);
-
-                                        for (action of data[module].actions) {
-                                                action = `<button id="${module}-${action}" onclick="javascript:execute('${module}', '${action}');">${action}</button>`;
-                                                $("#content").append(action);
-                                        }
-
-                                        spacer = "<div class='spacer'></div>";
-                                        $("#content").append(spacer);
-                                }
-
-                                output = `<div id="output"></div>`;
-                                $("body").append(output);
-                        });
-                });
-
-                function execute(module, action) {
-                        request = `/action/${module}/${action}`;
-                        $.get(request, function(response) {
-                                $("#output").html(response);
-                        });
-                }
-                </script>
-
-        <style>
-        body{
-            font-family:Sans-serif;
-                        background-color: #151515;
-            color: #aeaeae;
-                        margin: 0;
-        }
-
-                #content {
-                        margin: 8px;
-                }
-
-                #content h3 {
-                        margin-bottom: 5px;
-                }
-
-                .spacer {
-                        margin-bottom: 2em;
-                }
-
-                #output {
-                        height: 2em;
-                        background-color: #393939;
-                        border: #252525 3px solid;
-                        margin: 0 5px 0 5px;
-                        padding: 5px;
-                }
-
-                iframe {
-                        border: 2px solid #2d2d2d;
-                }
-
-        .big-button {
-            font: 400 16px Sans-serif;
-            padding:10px 30px;
-        }
-        </style>
+        <link rel="stylesheet" href="/css/base.css">
+        <link rel="stylesheet" href="/css/list.css">
+        <script src="/static/js/jquery-3.4.1.min.js"></script>
+        <script src="/js/list.js"></script>
     </head>
+
     <body>
-                <div id="content">
-                        <p>Loading</p>
-                </div>
+        <div id="content">
+            <p>Loading</p>
+        </div>
     </body>
 </html>
 

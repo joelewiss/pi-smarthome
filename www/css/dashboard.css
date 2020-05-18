@@ -1,23 +1,13 @@
-
-body{
-    font-family:Sans-serif;
-    background-color: #151515;
-    color: #aeaeae;
-}
-
-body a {
-    color: #aeaeae;
-    text-decoration: none;
-}
-
 #buttons {
     padding: 20px 0 10px 0;
 }
 
 #buttons button {
-    display: block;
+    display: inline-block;
     font: 600 16px Sans-serif;
-    margin: 5px;
+    padding: .4em 1em;
+    text-align: center;
+    margin: .1em .4em .1em 0;
 }
 
 #title {
@@ -33,7 +23,6 @@ body a {
 
 .switch {
     display: inline-block;
-    margin: 5px;
     color: black;
     background-color: grey;
     width: 300px;
