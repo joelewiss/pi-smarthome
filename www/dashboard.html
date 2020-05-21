@@ -19,7 +19,7 @@
         <light-switch
           v-for="light in switches"
           v-bind:light="light"
-          v-on:switched="onSwitched"
+          v-bind:key="light.id"
         ></light-switch>
       </div>
       <div id="buttons">  

@@ -1,35 +1,64 @@
+const states = {
+  on: {
+    text: "ON",
+    color:"green"
+  },
+  off: {
+    text: "OFF",
+    color: "red"
+  },
+  unkn: {
+    text: "UNKN",
+    color: "grey"
+  }
+}
+
 function execute(action) {
-  return `executed action ${action}`
+  return $.get(`/action/${ action.module }/${ action.action }/`);
 }
 
 Vue.component("light-switch", {
   props: ["light"],
 
   data: function () {
-    return { 
-      on: false,
-      colors: {
-        on: "green",
-        off: "red",
-        unkn: "grey"
-      },
+    return {
+      id: this.light.id,
+      state: states.unkn,
     }
   },
 
   template: `
     <div class="switch" 
-      :style="{ backgroundColor: colors.unkn }"
-      v-on:click="$emit('switched', light.id)"
+      :style="{ backgroundColor: this.state.color }"
+      v-on:click="toggle()"
     >
       <h3 class="switch-title">{{ light.name }}</h3>
-      <h1 class="switch-status">UNKN</h1>
+      <h1 class="switch-status">{{ this.state.text }}</h1>
     </div>`,
 
   methods: {
+    toggle: function() { 
+      // Toggle switch status
+      if (this.state === states.on) {
+        execute({ module: this.id, action: "off"});
+        this.state = states.off;
+      } else if (this.state === states.off) {
+        execute({ module: this.id, action: "on"});
+        this.state = states.on;
+      }
+    }
   },
   
   mounted: function() {
-    console.log("mounted lightswitch component");
+    // Get switch status
+    var request = { module: this.id, action: "status"}
+    execute(request).done((data) => {
+      if (data.indexOf("on") > -1) {
+        this.state = states.on;
+      } else if (data.indexOf("off") > -1) {
+        this.state = states.off;
+      }
+    });
   }
   
 });
