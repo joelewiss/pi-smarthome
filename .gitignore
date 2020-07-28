@@ -1,8 +1,6 @@
 __pycache__/
 *.py[cod]
-
-web.log*
-
 pyenv/
 
 *.o
+lib/radio/build

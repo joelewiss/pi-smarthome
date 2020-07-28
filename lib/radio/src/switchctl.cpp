@@ -1,19 +1,3 @@
-/*
-Usage: ./codesend decimalcode [protocol] [pulselength]
-decimalcode - As decoded by RFSniffer
-protocol    - According to rc-switch definitions
-pulselength - pulselength in microseconds
-
- 'codesend' hacked from 'send' by @justy
- 
- - The provided rc_switch 'send' command uses the form systemCode, unitCode, command
-   which is not suitable for our purposes.  Instead, we call 
-   send(code, length); // where length is always 24 and code is simply the code
-   we find using the RF_sniffer.ino Arduino sketch.
-
-(Use RF_Sniffer.ino to check that RF signals are being produced by the RPi's transmitter 
-or your remote control)
-*/
 #include "/home/pi/433Utils/rc-switch/RCSwitch.h"
 #include <stdlib.h>
 #include <stdio.h>
