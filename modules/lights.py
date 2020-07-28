@@ -1,7 +1,7 @@
 from subprocess import run
 from track import register
 
-LIBPATH = "/home/pi/webapp/lib/radio/switchctl"
+LIBPATH = "/home/pi/webapp/lib/radio/build/switchctl"
 lights = {
     "bedlight": {
         "id": 1
