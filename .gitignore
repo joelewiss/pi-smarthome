@@ -2,5 +2,7 @@ __pycache__/
 *.py[cod]
 pyenv/
 
+*.swp
+
 *.o
 lib/radio/build
