@@ -69,8 +69,6 @@ var app = new Vue({
   data: {
     switches: [
       {id: "bedlight", name: "Bed Light"},
-      {id: "livingroom", name: "Living Room"},
-      {id: "catlight", name: "Cat Light"}
     ],
     
     buttons: [
