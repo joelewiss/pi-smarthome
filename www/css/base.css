@@ -2,9 +2,24 @@ body{
     font-family:Sans-serif;
     background-color: #151515;
     color: #aeaeae;
+    margin: 0;
+}
+
+#app-list {
+    background-color: darkgrey;
+    color: black;
+    padding: 0.25em 0.5em;
+}
+
+#app-list a {
+    background-color: #606060;
+    padding: 0 0.5em;
+    color: white;
 }
 
 body a {
     color: #aeaeae;
     text-decoration: none;
 }
+
+

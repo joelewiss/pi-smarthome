@@ -10,6 +10,10 @@
     margin: .1em .4em .1em 0;
 }
 
+#app {
+  margin: 1em;
+}
+
 #title {
     margin-bottom: 20px;
     font-family: "Courier New", monospace;

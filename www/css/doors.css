@@ -1,0 +1,18 @@
+#app {
+  margin: 1em;
+}
+
+#log {
+  width: 50%;
+  border-collapse: collapse;
+}
+
+#log td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 4px 10px;
+}
+
+#log tr:nth-clild(even) {
+  background-color: #dddddd;
+}

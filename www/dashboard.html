@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/css/dashboard.css">
     <script src="/static/js/vue.js"></script>
     <script src="/static/js/jquery-3.4.1.min.js"></script>
+    <script src="/js/index.js"></script>
   </head>
 
   <body>
@@ -23,10 +24,10 @@
         ></light-switch>
       </div>
       <div id="buttons">  
-        <button v-on:click="goToList">Go to Action List</button><button v-for="button in buttons">{{ button.text }}</button>
+        <button v-for="button in buttons" v-on:click="window.execute(button.action)">{{ button.text }}</button>
       </div>
     
-      <img id="weather" src="http://banners.wunderground.com/cgi-bin/banner/ban/wxBanner?bannertype=wxstnsticker&weatherstationcount=KMDEDGEW31" height="160" width="160" border="0" alt="Weather Underground PWS KMDEDGEW31" />
+      <!--<img id="weather" src="http://banners.wunderground.com/cgi-bin/banner/ban/wxBanner?bannertype=wxstnsticker&weatherstationcount=KMDEDGEW31" height="160" width="160" border="0" alt="Weather Underground PWS KMDEDGEW31" />-->
     </div>
   </body>
   

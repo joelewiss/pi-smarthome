@@ -33,7 +33,7 @@ def return_list():
 
 @app.route("/favicon.ico")
 def favicon():
-    abort(204)
+    return "none", 204
 
 if __name__ == "__main__":
     #print(modules)

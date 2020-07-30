@@ -6,3 +6,5 @@ pyenv/
 
 *.o
 lib/radio/build
+
+data/doors.json

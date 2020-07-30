@@ -74,9 +74,19 @@ var app = new Vue({
     ],
     
     buttons: [
-      {id: "vmpower", text:"Power VM 150", action:"vm/power150"},
-      {id: "wake", text:"Wake Server", action:"desktop/wake"},
-      {id: "shutdown", text: "Power off Controller", action:""}
+      {
+        id: "wake",
+        text: "Wake Server",
+        action: {
+          module: "desktop",
+          action: "wake"
+        }
+      },
+      {
+        id: "shutdown",
+        text: "Power off Controller",
+        action: ""
+      }
     ],
 
   },
