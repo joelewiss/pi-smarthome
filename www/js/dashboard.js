@@ -74,7 +74,7 @@ var app = new Vue({
     buttons: [
       {
         id: "wake",
-        text: "Wake Server",
+        text: "Wake Desktop",
         action: {
           module: "desktop",
           action: "wake"

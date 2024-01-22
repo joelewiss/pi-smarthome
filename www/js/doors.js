@@ -43,7 +43,7 @@ $(() => {
         }
 
         for (sensor in stats) {
-            let state = stats[sensor];
+            let state = stats[sensor] == "Closed" ? "Closed" : "Open";
             let elm = `<p>${sensor}: ${state}</p>`
             if (state == "Closed") {
                 $("#app").prepend(`<div style="background-color: #303030">${elm}</div>`);
