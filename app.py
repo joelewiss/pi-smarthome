@@ -1,15 +1,19 @@
 #!/home/pi/webapp/pyenv/bin/python
 
-from flask import Flask, make_response, abort
+from flask import Flask, make_response, abort, request
 from track import modules
 from modules import *
 
 app = Flask(__name__)
 
-@app.route("/action/<module>/<action>/")
+@app.route("/action/<module>/<action>/", methods=["GET", "POST"])
 def run_action(module, action):
     if (module in modules) and (action in modules[module]):
-        response = make_response(modules[module][action]())
+        module_obj = modules[module][action]
+        if module_obj["json"]:
+            response = make_response(module_obj["func"](request.json))
+        else:
+            response = make_response(module_obj["func"]())
         response.headers["content-type"] = "text/plain"
         return response
     else:

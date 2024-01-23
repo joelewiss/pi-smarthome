@@ -1,0 +1,9 @@
+#main {
+    margin:1em;
+}
+
+#schedule {
+    display: inline-block;
+    border: darkgrey 1px solid;
+    padding: 0 0.5em;
+}

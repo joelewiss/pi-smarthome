@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Coffee Machine</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Joe Lewis">
+    <meta charset="utf-8"/>
+
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/coffee.css">
+    <script src="/static/js/jquery-3.4.1.min.js"></script>
+    <script src="/static/js/jquery.timeago.js"></script>
+    <script src="/js/index.js"></script>
+    <script src="/js/coffee.js"></script>
+  </head>
+  <body>
+    <div id="main">
+      <h1>Coffee Machine</h1>
+      <p>Power: <button onClick="togglePower()" id="powerButton"></button></p>
+      <div id="schedule">
+        <h3>Schedule</h3>
+        <p>Current: <span id="currentSchedule"></span></p>
+        <p>
+          <input type="time" id="scheduleTime" />
+          <button onClick="setSchedule()">Set Schedule</button></p>
+        <p>
+          <button onClick="clearSchedule()">Clear Schedule</button></p>
+      </div>
+
+
+
+
+    </div>
+
+  </body>
+</html>
