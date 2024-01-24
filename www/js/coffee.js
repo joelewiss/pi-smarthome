@@ -33,12 +33,20 @@ function togglePower() {
 function setSchedule() {
   const time = $("#scheduleTime").val().split(":");
   const now = new Date();
-  // We assume the schedule setting is for tomorrow
-  now.setDate(now.getDate() + 1);
+  // If this is tomorrow's time, add a day
+  if (now.getHours() > time[0]) {
+    now.setDate(now.getDate() + 1);
+  }
   now.setHours(time[0], time[1], 0, 0);
   console.log(now);
 
   $.post("/action/coffee/schedule_on/", {"time": now.getTime()/1000}, function() {
     update_schedule();
   });
+}
+
+function clearSchedule() {
+    $.get("/action/coffee/clear_schedule/", function () {
+      update_schedule();
+    });
 }

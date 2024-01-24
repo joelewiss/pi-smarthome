@@ -1,6 +1,6 @@
 from subprocess import run
 from track import register
-from threading import Thread
+from threading import Timer
 import time
 
 LIBPATH = "/home/pi/webapp/lib/radio/build/switchctl"
@@ -59,18 +59,28 @@ def schedule_on(data):
     # Wait time should be zero if for some reason the delta is negative
     wait_time = max(int(data["time"]) - time.time(), 0)
 
-    def event(wait, duration):
+    def off_event():
         global NEXT_EVENT
-        time.sleep(wait)
-        on()
-        time.sleep(duration)
         off()
         NEXT_EVENT = None
 
-    event_thread = Thread(target=event, args=(wait_time, duration))
-    event_thread.start()
+    def on_event():
+        global NEXT_EVENT
+        on()
+        NEXT_EVENT = Timer(duration, off)
+        NEXT_EVENT.start()
 
+    event_thread = Timer(wait_time, on_event))
+    event_thread.start()
     NEXT_EVENT = event_thread
 
     return "Event scheduled"
+
+@register(MODULE)
+def clear_schedule():
+    if NEXT_EVENT is not None:
+        NEXT_EVENT.cancel()
+        return "Schedule cleared"
+    else:
+        return "No event scheduled"
 
